@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   	redirect_to new_session_path unless current_user
   end
 
+  def check_if_own_user_page!
+  	redirect_to root_path unless current_user == User.find(params[:id])
+  end
+
 end
