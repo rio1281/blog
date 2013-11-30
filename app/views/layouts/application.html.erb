@@ -14,7 +14,13 @@
 
 		<div id="navi">
 		  <% if current_user %>
-		  	<%= link_to "マイページ", "/admin", :style=>"color:white;" %>
+
+		  	<% if current_user.site %>
+			  	<%= link_to "マイページ", site_admin_path(current_user.site), :style=>"color:white;" %>
+			  <% else %>
+			  	<%= link_to "ブログ作成", new_site_path, :style=>"color:white;" %>
+			  <% end %>
+
 		    <%= link_to "ログアウト", "/session", :method=>	:delete, :style=>"color:white;" %>
 		  <% else %>
 		  	<%= link_to "新規登録", "/users/new", :style=>"color:white;" %>
