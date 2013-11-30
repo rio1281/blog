@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
   	redirect_to root_path unless current_user == Site.find(params[:id]).user
   end
 
+  def check_if_own_site_in_admin!
+    redirect_to root_path unless current_user == Site.find(params[:site_id]).user
+  end
+
 end
