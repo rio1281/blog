@@ -6,7 +6,22 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller.controller_name %>">
+	<div id="header">
+		<div id="title">
+			<%= "Blog" %>
+		</div>
+
+		<div id="navi">
+		  <% if current_user %>
+		  	<%= link_to "マイページ", "/admin", :style=>"color:white;" %>
+		    <%= link_to "ログアウト", "/session", :method=>	:destroy, :style=>"color:white;" %>
+		  <% else %>
+		  	<%= link_to "新規登録", "/users/new", :style=>"color:white;" %>
+		    <%= link_to "ログイン", "/session/new", :style=>"color:white;" %>
+		  <% end %>
+		</div>
+	</div>
 
 <%= yield %>
 
