@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
-  resources :sites
+  resources :sites do
+    resource :admin, only: [:show]
+  end
 
   resource :session, only: [:new, :create, :destroy]
   resources :users
