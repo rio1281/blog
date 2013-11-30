@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   	user = User.find_by_name(params[:name])
   	if user and user.authenticate(params[:password])
   		session[:user_id] = user.id
-  		# TODO: redirect to the admin page
+  		redirect_to edit_user_path(user)
   	else
   		redirect_to new_session_path, alert: "ユーザー名かパスワードが間違っています"
   	end
@@ -17,5 +17,7 @@ class SessionsController < ApplicationController
 
   # DELETE /session
   def destroy
-  end
+	  session[:user_id] = nil
+	  redirect_to new_session_path, :notice => "Log out"
+	end
 end
