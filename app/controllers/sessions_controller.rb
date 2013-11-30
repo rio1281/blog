@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
   # DELETE /session
   def destroy
 	  session[:user_id] = nil
-	  redirect_to new_session_path, :notice => "Log out"
+	  redirect_to root_path, :notice => "Log out"
 	end
 end
