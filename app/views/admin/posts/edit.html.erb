@@ -1,6 +1,6 @@
-<h1>Editing post</h1>
+<h1>記事編集ページ</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Show', site_post_path(@post.site, @post) %> |
+<%= link_to 'Back', site_admin_path(@post.site) %>
