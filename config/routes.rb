@@ -1,7 +1,7 @@
 Blog::Application.routes.draw do
-  resources :posts, only: [:show]
 
   resources :sites do
+    resources :posts, only: [:show]
     resource :admin, only: [:show] do
       resources :posts, except: [:show, :index]
     end
