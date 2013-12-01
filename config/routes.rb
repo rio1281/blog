@@ -1,8 +1,10 @@
 Blog::Application.routes.draw do
-  resources :posts
+  resources :posts, only: [:show]
 
   resources :sites do
-    resource :admin, only: [:show]
+    resource :admin, only: [:show] do
+      resources :posts, except: [:show, :index]
+    end
   end
 
   resource :session, only: [:new, :create, :destroy]
