@@ -3,7 +3,7 @@ Blog::Application.routes.draw do
   resources :sites do
     resources :posts, only: [:show]
     resource :admin, only: [:show] do
-      resources :posts, except: [:show, :index]
+      resources :posts, except: [:show, :index], controller: 'admin/posts'
     end
   end
 
