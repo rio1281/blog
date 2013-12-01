@@ -14,6 +14,7 @@ class Admin::PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.site = current_user.site
 
     respond_to do |format|
       if @post.save
