@@ -1,4 +1,6 @@
 Blog::Application.routes.draw do
+  resources :posts
+
   resources :sites do
     resource :admin, only: [:show]
   end
