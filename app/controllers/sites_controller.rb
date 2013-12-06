@@ -6,6 +6,7 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
+    @posts = Post.all
     @sites = Site.all
   end
 

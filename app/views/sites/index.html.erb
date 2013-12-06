@@ -1,27 +1,33 @@
 <h1>アプリケーションTOPページ</h1>
 
+<h2>新着記事</h2>
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
   <tbody>
-    <% @sites.each do |site| %>
+    <% @posts.each do |post| %>
       <tr>
-        <td><%= site.title %></td>
-        <td><%= link_to 'Show', site %></td>
-        <td><%= link_to 'Edit', edit_site_path(site) %></td>
-        <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= post.site.user.name %>さんの記事</td>
+        <td><%= post.created_at %></td>
+      </tr>
+      <tr>
+        <td><%= link_to post.title, site_post_path(post.site, post) %></td>
+        <td>コメント(<%= post.comments.length %>)</td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Site', new_site_path %>
+<h2>ブログ一覧</h2>
+<table>
+  <tbody>
+    <% @sites.each do |site| %>
+      <tr>
+        <td><%= site.user.name %>さんのブログ</td>
+        <td><%= site.created_at %></td>
+      </tr>
+      <tr>
+        <td><%= link_to site.title, site %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
