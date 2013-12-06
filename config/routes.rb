@@ -2,7 +2,7 @@ Blog::Application.routes.draw do
 
   resources :sites do
     resources :posts, only: [:show] do
-      resources :comments, only: [:edit]
+      resources :comments, only: [:create, :edit, :update, :destroy]
     end
     resource :admin, only: [:show] do
       resources :posts, except: [:show, :index], controller: 'admin/posts'
