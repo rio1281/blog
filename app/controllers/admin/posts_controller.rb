@@ -1,5 +1,6 @@
 class Admin::PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :check_if_own_site_in_admin!
 
   # GET /posts/new
   def new
