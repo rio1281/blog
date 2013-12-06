@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
 
+  resources :comments
+
   resources :sites do
     resources :posts, only: [:show]
     resource :admin, only: [:show] do
