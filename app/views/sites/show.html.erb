@@ -1,10 +1,19 @@
-<h1>個人サイトTOPページ</h1>
+<h1><%= @site.title %></h1>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @site.title %>
-</p>
-
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+<table>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+      	<td><%= link_to post.title, site_post_path(post.site, post) %></td>
+      </tr>
+      <tr>
+        <td><%= post.created_at %></td>
+        <td>コメント(<%= post.comments.length %>)</td>
+      </tr>
+      <tr>
+        <td><%= post.body %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

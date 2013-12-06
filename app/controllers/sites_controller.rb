@@ -13,6 +13,7 @@ class SitesController < ApplicationController
   # GET /sites/1
   # GET /sites/1.json
   def show
+    @posts = @site.posts
   end
 
   # GET /sites/new
