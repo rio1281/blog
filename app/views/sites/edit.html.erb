@@ -2,5 +2,9 @@
 
 <%= render 'form' %>
 
+<%= button_to 'Destroy', @site, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<br>
+
 <%= link_to 'Show', @site %> |
 <%= link_to 'Back', sites_path %>
