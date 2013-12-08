@@ -3,6 +3,7 @@ class AdminsController < ApplicationController
 
 	# GET /sites/:site_id/admin
   def show
-  	@posts = Post.all
+  	@site = current_user.site
+  	@posts = @site.posts
   end
 end
