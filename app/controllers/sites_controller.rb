@@ -61,7 +61,7 @@ class SitesController < ApplicationController
   def destroy
     @site.destroy
     respond_to do |format|
-      format.html { redirect_to sites_url }
+      format.html { redirect_to new_site_path }
       format.json { head :no_content }
     end
   end
