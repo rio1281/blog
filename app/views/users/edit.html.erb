@@ -2,4 +2,6 @@
 
 <%= render 'form' %>
 
+<%= button_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+
 <%= link_to 'マイページへ戻る', site_admin_path(current_user.site) %>
