@@ -6,7 +6,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.site.user.name %>さんの記事</td>
-        <td><%= post.created_at %></td>
+        <td><%= post.created_at.strftime("%Y/%m/%d %X") %></td>
       </tr>
       <tr>
         <td><%= link_to post.title, site_post_path(post.site, post) %></td>
@@ -23,7 +23,7 @@
     <% @sites.each do |site| %>
       <tr>
         <td><%= site.user.name %>さんのブログ</td>
-        <td><%= site.created_at %></td>
+        <td><%= site.created_at.strftime("%Y/%m/%d %X") %></td>
       </tr>
       <tr>
         <td><%= link_to site.title, site %></td>
