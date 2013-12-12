@@ -1,19 +1,21 @@
-<h1><%= @site.title %></h1>
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="page-header"><%= link_to @site.title, site_path(@site) %></h1>
+  <p id="notice"><%= notice %></p>
 
-<table>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-      	<td><%= link_to post.title, site_post_path(post.site, post) %></td>
-      </tr>
-      <tr>
-        <td><%= post.created_at.strftime("%Y/%m/%d %X") %></td>
-        <td>コメント(<%= post.comments.length %>)</td>
-      </tr>
-      <tr>
-        <td><%= post.body %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @posts.each do |post| %>
+    <ul style='list-style-type:none;'>
+      <li class="span3">
+        <div class="thumbnail">
+          <div class="caption">
+            <p class="text-right"><%= post.created_at.strftime("%Y/%m/%d %X") %></p>
+            <h4><%= link_to post.title, site_post_path(post.site, post) %></h4>
+            <p><%= truncate(post.body, :length => 60) %></p>
+            <p class="text-right">コメント(<%= post.comments.length %>) | <%= post.site.title %></p>
+            <p class="text-right"><%= link_to "read more..", site_post_path(post.site, post) %></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+
+</div>
