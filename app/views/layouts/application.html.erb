@@ -6,27 +6,29 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= controller.controller_name %>">
-	<div id="header">
-		<div id="title">
-			<%= link_to "Blog", root_path, :style=>"color:white;" %>
-		</div>
+<body>
+	<div class="navbar navbar-inverse">
+	  <div class="navbar-inner">
+	    <div class="brand"><%= link_to "Blog", root_path %></div>
 
-		<div id="navi">
-		  <% if current_user %>
+	    <ul class="nav">
+	    	<!-- current_userの場合、マイページ or ブログ作成リンク & ログアウトリンクの表示 -->
+			  <% if current_user %>
+			  	<% if current_user.site %>
+				  	<li><%= link_to "マイページ", site_admin_path(current_user.site) %></li>
+				  <% else %>
+				  	<li><%= link_to "ブログ作成", new_site_path %></li>
+				  <% end %>
+			    <li><%= link_to "ログアウト", "/session", :method=>	:delete %></li>
 
-		  	<% if current_user.site %>
-			  	<%= link_to "マイページ", site_admin_path(current_user.site), :style=>"color:white;" %>
+			  <!-- current_userでない場合、新規登録 & ログインリンクの表示 -->
 			  <% else %>
-			  	<%= link_to "ブログ作成", new_site_path, :style=>"color:white;" %>
+			  	<li><%= link_to "新規登録", "/users/new" %></li>
+			    <li><%= link_to "ログイン", "/session/new" %></li>
 			  <% end %>
+	    </ul>
 
-		    <%= link_to "ログアウト", "/session", :method=>	:delete, :style=>"color:white;" %>
-		  <% else %>
-		  	<%= link_to "新規登録", "/users/new", :style=>"color:white;" %>
-		    <%= link_to "ログイン", "/session/new", :style=>"color:white;" %>
-		  <% end %>
-		</div>
+	  </div>
 	</div>
 
 <%= yield %>
