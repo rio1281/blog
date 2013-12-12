@@ -1,37 +1,30 @@
-<h1><%= @post.site.title %></h1>
-<h2><%= @post.title %></h2>
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="page-header"><%= link_to @post.site.title, site_path(@post.site) %></h1>
+  <h2><%= @post.title %></h2>
+  <p id="notice"><%= notice %></p>
 
-<p><%= @post.created_at.strftime("%Y/%m/%d %X") %></p>
-<p><%= @post.body %></p>
+  <p><%= @post.created_at.strftime("%Y/%m/%d %X") %> | コメント(<%= @post.comments.length %>)</p>
 
-<p><%= link_to '一覧へ戻る', site_path(@post.site) %></p>
+  <hr>
+  <p><%= simple_format(@post.body) %></p>
+  <hr>
 
-<!-- コメント投稿box -->
-<h3>Comment</h3>
-<% if current_user %>
-  <%= render 'form' %>
-<% end %>
+  <!-- コメント投稿box -->
+  <h4>Comment</h4>
+  <% if current_user %>
+    <%= render 'form' %>
+  <% end %>
 
-<!-- コメント一覧 -->
-<table>
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.user.name %>さん</td>
-        <td><%= comment.created_at.strftime("%Y/%m/%d %X") %></td>
-      </tr>
-      <tr>
-        <td><%= comment.comment %></td>
-        <td>
-          <% if comment.user == current_user %>
-            <%= link_to 'Edit', edit_site_post_comment_path(comment.post.site, comment.post, comment) %> |
-            <%= link_to 'Destroy', [@post.site, @post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <!-- コメント一覧 -->
+  <% @comments.each do |comment| %>
+    <p><%= comment.user.name %>さん | <%= comment.created_at.strftime("%Y/%m/%d %X") %>
+      <% if comment.user == current_user %>
+        ( <%= link_to 'Edit', edit_site_post_comment_path(comment.post.site, comment.post, comment) %> |
+        <%= link_to 'Destroy', [@post.site, @post, comment], method: :delete, data: { confirm: 'Are you sure?' } %> )
+      <% end %>
+    </p>
+    <p><%= simple_format(comment.comment) %></p>
+    <hr>
+  <% end %>
 
-<br>
+</div>
