@@ -1,24 +1,26 @@
-<h1>ログイン</h1>
-<div>
-	<% if flash[:alert] %>
-		<p><%= flash[:alert] %></p>
-	<% end %>
+<div class="container">
+	<h1 class="page-header">ログイン</h1>
+	<div>
+		<% if flash[:alert] %>
+			<p><%= flash[:alert] %></p>
+		<% end %>
 
-	<%= form_tag('/session') do %>
-		<div>
-			<%= label_tag :name, '名前:' %>
-			<%= text_field_tag :name, params[:name] %>
-		</div>
+		<%= form_tag('/session') do %>
+			<div>
+				<%= label_tag :name, '名前:' %>
+				<%= text_field_tag :name, params[:name] %>
+			</div>
 
-		<div>
-			<%= label_tag :password, 'パスワード:' %>
-			<%= password_field_tag :password, params[:password] %>
-		</div>
+			<div>
+				<%= label_tag :password, 'パスワード:' %>
+				<%= password_field_tag :password, params[:password] %>
+			</div>
 
-		<div>
-			<%= submit_tag 'ログイン' %>
-		</div>
-	<% end %>
+			<div>
+				<%= submit_tag 'ログイン' %>
+			</div>
+		<% end %>
+	</div>
+
+	<%= link_to 'TOPへ戻る', root_path %>
 </div>
-
-<%= link_to 'アプリケーションTOPへ戻る', root_path %>
