@@ -1,7 +1,11 @@
-<h1>Editing user</h1>
+<div class="container">
+	<h1 class="page-header">アカウント設定</h1>
 
-<%= render 'form' %>
+	<%= render 'admins/sidenavi' %>
 
-<%= button_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<div class="span8">
+		<%= render 'form' %>
 
-<%= link_to 'マイページへ戻る', site_admin_path(current_user.site) %>
+		<%= button_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+	</div>
+</div>

@@ -1,6 +1,10 @@
-<h1>記事編集ページ</h1>
+<div class="container">
+	<h1 class="page-header">記事編集ページ</h1>
 
-<%= render 'form' %>
+	<%= render 'admins/sidenavi' %>
 
-<%= link_to 'Show', site_post_path(@post.site, @post) %> |
-<%= link_to 'Back', site_admin_path(@post.site) %>
+	<div class="span8">
+		<%= render 'form' %>
+	</div>
+</div>
+

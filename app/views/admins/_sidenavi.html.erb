@@ -1,0 +1,9 @@
+<div class="span3 bs-docs-sidebar">
+  <ul class="nav nav-list bs-docs-sidenav affix">
+    <li><a href="<%= site_admin_path (current_user.site) %>"><i class="icon-chevron-right"></i> 投稿した記事</a></li>
+    <li><a href="<%= new_site_admin_post_path (current_user.site) %>"><i class="icon-chevron-right"></i> 新規投稿</a></li>
+    <li><a href="<%= edit_site_path (current_user.site) %>"><i class="icon-chevron-right"></i> ブログ設定</a></li>
+    <li><a href="<%= edit_user_path (current_user) %>"><i class="icon-chevron-right"></i> アカウント設定</a></li>
+    <li><a href="<%= site_path(current_user.site) %>"><i class="icon-chevron-right"></i> ブログTOP</a></li>
+  </ul>
+</div>
