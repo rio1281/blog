@@ -1,11 +1,11 @@
 <div class="container">
-	<h1 class="page-header">アカウント設定</h1>
+  <h1 class="page-header">アカウント設定</h1>
 
-	<%= render 'admins/sidenavi' %>
+  <%= render 'admins/sidenavi' %>
 
-	<div class="span8">
-		<%= render 'form' %>
+  <div class="span8">
+    <%= render 'form' %>
 
-		<%= button_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
-	</div>
+    <%= button_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 </div>

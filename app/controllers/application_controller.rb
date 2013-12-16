@@ -7,20 +7,20 @@ class ApplicationController < ActionController::Base
 
   private
 
-	def current_user
+  def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def check_if_logged_in!
-  	redirect_to new_session_path unless current_user
+    redirect_to new_session_path unless current_user
   end
 
   def check_if_own_user_page!
-  	redirect_to root_path unless current_user == User.find(params[:id])
+    redirect_to root_path unless current_user == User.find(params[:id])
   end
 
   def check_if_own_site!
-  	redirect_to root_path unless current_user == Site.find(params[:id]).user
+    redirect_to root_path unless current_user == Site.find(params[:id]).user
   end
 
   def check_if_own_site_in_admin!

@@ -1,10 +1,10 @@
 <div class="container">
-	<h1 class="page-header">個人サイトの情報編集ページ</h1>
-	<%= render 'admins/sidenavi' %>
+  <h1 class="page-header">個人サイトの情報編集ページ</h1>
+  <%= render 'admins/sidenavi' %>
 
-	<div class="span8">
-		<%= render 'form' %>
-		<%= button_to 'Destroy', @site, method: :delete, data: { confirm: 'Are you sure?' } %>
-	</div>
+  <div class="span8">
+    <%= render 'form' %>
+    <%= button_to 'Destroy', @site, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 </div>
 

@@ -7,29 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="navbar navbar-inverse">
-	  <div class="navbar-inner">
-	    <div class="brand"><%= link_to "Blog", root_path %></div>
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <div class="brand"><%= link_to "Blog", root_path %></div>
 
-	    <ul class="nav">
-	    	<!-- current_userの場合、マイページ or ブログ作成リンク & ログアウトリンクの表示 -->
-			  <% if current_user %>
-			  	<% if current_user.site %>
-				  	<li><%= link_to "マイページ", site_admin_path(current_user.site) %></li>
-				  <% else %>
-				  	<li><%= link_to "ブログ作成", new_site_path %></li>
-				  <% end %>
-			    <li><%= link_to "ログアウト", "/session", :method=>	:delete %></li>
+      <ul class="nav">
+        <!-- current_userの場合、マイページ or ブログ作成リンク & ログアウトリンクの表示 -->
+        <% if current_user %>
+          <% if current_user.site %>
+            <li><%= link_to "マイページ", site_admin_path(current_user.site) %></li>
+          <% else %>
+            <li><%= link_to "ブログ作成", new_site_path %></li>
+          <% end %>
+          <li><%= link_to "ログアウト", "/session", :method=>	:delete %></li>
+        <!-- current_userでない場合、新規登録 & ログインリンクの表示 -->
+        <% else %>
+          <li><%= link_to "新規登録", "/users/new" %></li>
+          <li><%= link_to "ログイン", "/session/new" %></li>
+        <% end %>
+      </ul>
 
-			  <!-- current_userでない場合、新規登録 & ログインリンクの表示 -->
-			  <% else %>
-			  	<li><%= link_to "新規登録", "/users/new" %></li>
-			    <li><%= link_to "ログイン", "/session/new" %></li>
-			  <% end %>
-	    </ul>
-
-	  </div>
-	</div>
+    </div>
+  </div>
 
 <%= yield %>
 
